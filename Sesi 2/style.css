@@ -1,0 +1,107 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  padding: 10px;
+  background-color: blue;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+a {
+  color: white;
+  margin: 5px;
+  text-decoration: none;
+  display: block;
+}
+
+.home {
+  display: flex;
+  gap: 30px;
+  padding: 50px;
+}
+
+.left-side {
+  text-align: center;
+  padding-top: 100px;
+}
+
+button {
+  background-color: blue;
+  border: none;
+  padding: 10px 20px;
+  color: white;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: darkblue;
+}
+
+img {
+  width: 100%;
+}
+
+.about-me {
+  text-align: center;
+  padding: 20px;
+}
+
+.about-me h2 {
+  color: blue;
+}
+
+.about-me div {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.about-me div p {
+  background-color: lightgray;
+  padding: 15px 10px;
+  border: black 1px solid;
+}
+
+.portofolio {
+  text-align: center;
+  padding: 0px 20px;
+}
+
+.portofolio h2 {
+  color: blue;
+}
+
+.flex-container-portofolio {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.portofolio-item {
+  width: 350px;
+  border: none;
+  box-shadow: 3px 3px 10px gray;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+footer {
+  background-color: blue;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  margin-top: 20px;
+}
