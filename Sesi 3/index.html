@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portofolio Abiyyu</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      /* Sedikit CSS vanilla hanya untuk visual pendukung */
+      .hero-section {
+        background-color: #f8f9fa;
+        min-height: 80vh;
+        display: flex;
+        align-items: center;
+      }
+      .profile-img {
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      }
+      section {
+        padding: 80px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+      <div class="container">
+        <a class="navbar-brand fw-bold" href="#">Abiyyu.dev</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+            <li class="nav-item">
+              <a class="nav-link" href="#about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#portfolio">Portfolio</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <section id="home" class="hero-section">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-6 mb-4 mb-lg-0">
+            <h1 class="display-4 fw-bold mb-3">
+              Selamat datang di website saya
+            </h1>
+            <p class="lead text-muted mb-4">
+              Silahkan jelajahi website saya untuk melihat progres karir saya
+              sebagai Web Developer.
+            </p>
+            <a href="#about" class="btn btn-primary btn-lg px-4 me-md-2"
+              >Pelajari Lebih Lanjut</a
+            >
+          </div>
+          <div class="col-lg-6 text-center">
+            <img
+              src="https://plus.unsplash.com/premium_photo-1689530775582-83b8abdb5020?q=80&w=600&h=400&auto=format&fit=crop"
+              alt="Foto Profil"
+              class="img-fluid profile-img"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="bg-white">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-8 text-center mb-5">
+            <h2 class="fw-bold">About Me</h2>
+            <hr
+              class="mx-auto"
+              style="width: 50px; height: 3px; background: #0d6efd"
+            />
+            <p class="text-muted">A brief introduction about myself</p>
+          </div>
+        </div>
+        <div class="row g-4 justify-content-center">
+          <div class="col-md-6">
+            <div class="p-4 border rounded shadow-sm">
+              <ul class="list-unstyled mb-0">
+                <li class="mb-2"><strong>Nama:</strong> Abiyyu</li>
+                <li class="mb-2">
+                  <strong>Pendidikan:</strong> Bachelor of Computer Science
+                </li>
+                <li class="mb-2"><strong>Status:</strong> Fresh Graduate</li>
+                <li class="mb-2"><strong>Telepon:</strong> +62********</li>
+                <li class="mb-2">
+                  <strong>Hobi:</strong> Playing game & reading novel
+                </li>
+                <li><strong>Lokasi:</strong> Indonesia</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="portfolio" class="bg-light">
+      <div class="container">
+        <div class="row justify-content-center mb-5 text-center">
+          <div class="col-md-8">
+            <h2 class="fw-bold">Portfolio Project</h2>
+            <p class="text-muted">Beberapa proyek yang pernah saya kerjakan.</p>
+          </div>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm">
+              <img
+                src="https://picsum.photos/350/200?random=1"
+                class="card-img-top"
+                alt="Project 1"
+              />
+              <div class="card-body text-center">
+                <h5 class="card-title fw-bold">Project 1</h5>
+                <p class="card-text text-muted small">
+                  Description of Project 1. Focus on React and Tailwind
+                  development.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm">
+              <img
+                src="https://picsum.photos/350/200?random=2"
+                class="card-img-top"
+                alt="Project 2"
+              />
+              <div class="card-body text-center">
+                <h5 class="card-title fw-bold">Project 2</h5>
+                <p class="card-text text-muted small">
+                  Description of Project 2. Integrated with Firebase
+                  Authentication.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm">
+              <img
+                src="https://picsum.photos/350/200?random=3"
+                class="card-img-top"
+                alt="Project 3"
+              />
+              <div class="card-body text-center">
+                <h5 class="card-title fw-bold">Project 3</h5>
+                <p class="card-text text-muted small">
+                  Description of Project 3. Building dynamic user interfaces.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="py-4 bg-dark text-white text-center">
+      <div class="container">
+        <p class="mb-0">&copy; 2026 Abiyyu Portofolio. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
