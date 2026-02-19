@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Barang</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f0f2f5;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .page-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2.5rem 0;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .page-header h1 {
+            font-weight: 700;
+            font-size: 2rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .page-header p {
+            opacity: 0.85;
+            font-size: 0.95rem;
+        }
+
+        /* Search & Filter Bar */
+        .filter-bar {
+            background: white;
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+        }
+
+        .search-input {
+            border: 2px solid #e9ecef;
+            border-radius: 12px;
+            padding: 0.7rem 1rem 0.7rem 2.8rem;
+            font-size: 0.95rem;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            width: 100%;
+        }
+
+        .search-input:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.15);
+            outline: none;
+        }
+
+        .search-wrapper {
+            position: relative;
+        }
+
+        .search-wrapper i {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #adb5bd;
+            font-size: 0.95rem;
+        }
+
+        /* Category Buttons */
+        .category-btn {
+            border: 2px solid #e9ecef;
+            background: white;
+            color: #495057;
+            border-radius: 50px;
+            padding: 0.45rem 1.2rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .category-btn:hover {
+            border-color: #667eea;
+            color: #667eea;
+            background: rgba(102, 126, 234, 0.05);
+        }
+
+        .category-btn.active {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-color: transparent;
+            box-shadow: 0 3px 10px rgba(102, 126, 234, 0.3);
+        }
+
+        /* Product Count */
+        .result-count {
+            font-size: 0.9rem;
+            color: #6c757d;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .result-count span {
+            color: #667eea;
+            font-weight: 700;
+        }
+
+        /* Product Cards */
+        .product-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .product-card .card-img-wrapper {
+            background: #f8f9fa;
+            padding: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .product-card .card-img-wrapper img {
+            max-height: 100%;
+            max-width: 100%;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover .card-img-wrapper img {
+            transform: scale(1.05);
+        }
+
+        .product-card .card-body {
+            padding: 1.2rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card .category-badge {
+            display: inline-block;
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            margin-bottom: 0.6rem;
+            width: fit-content;
+        }
+
+        .product-card .card-title {
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: #212529;
+            margin-bottom: 0.4rem;
+        }
+
+        .product-card .card-text {
+            color: #6c757d;
+            font-size: 0.85rem;
+            line-height: 1.5;
+            flex: 1;
+        }
+
+        .product-card .price {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #667eea;
+            margin-top: 0.8rem;
+        }
+
+        .product-card .btn-detail {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 0.55rem 1.2rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-top: 0.8rem;
+            transition: opacity 0.3s ease, transform 0.2s ease;
+            width: 100%;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+        }
+
+        .product-card .btn-detail:hover {
+            opacity: 0.9;
+            transform: scale(1.02);
+            color: white;
+        }
+
+        /* No Results */
+        .no-results {
+            text-align: center;
+            padding: 3rem 1rem;
+            color: #adb5bd;
+        }
+
+        .no-results i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .no-results p {
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .product-col {
+            animation: fadeInUp 0.4s ease forwards;
+        }
+
+        .product-col:nth-child(1) {
+            animation-delay: 0.05s;
+        }
+
+        .product-col:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+
+        .product-col:nth-child(3) {
+            animation-delay: 0.15s;
+        }
+
+        .product-col:nth-child(4) {
+            animation-delay: 0.2s;
+        }
+
+        .product-col:nth-child(5) {
+            animation-delay: 0.25s;
+        }
+
+        .product-col:nth-child(6) {
+            animation-delay: 0.3s;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <div class="page-header">
+        <div class="container">
+            <h1><i class="fas fa-box-open me-2"></i>Daftar Barang</h1>
+            <p>Temukan barang yang kamu butuhkan</p>
+        </div>
+    </div>
+
+    <div class="container pb-5">
+
+        <!-- Search & Filter Bar -->
+        <div class="filter-bar">
+            <div class="row g-3 align-items-center">
+                <div class="col-md-6">
+                    <div class="search-wrapper">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="searchInput" class="search-input" placeholder="Cari barang...">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div id="categoryButtons" class="d-flex flex-wrap gap-2">
+                        <!-- Category buttons rendered by JS -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Result Count -->
+        <div class="result-count" id="resultCount"></div>
+
+        <!-- Product Grid -->
+        <div class="row g-4" id="productGrid">
+            <!-- Products rendered by JS -->
+        </div>
+
+    </div>
+
+    <script>
+        const products = [
+            {
+                name: "Laptop",
+                price: 10000000,
+                image: "https://images.tokopedia.net/img/JFrBQq/2024/1/16/4b9cc476-f5fc-45ee-a469-8b077a51d5e7.jpg",
+                description: "Laptop Gaming Terbaik untuk Mahasiswa",
+                category: "Elektronik"
+            },
+            {
+                name: "Mouse",
+                price: 100000,
+                image: "https://images.tokopedia.net/img/JFrBQq/2024/1/16/4b9cc476-f5fc-45ee-a469-8b077a51d5e7.jpg",
+                description: "Mouse Gaming Terbaik untuk Mahasiswa",
+                category: "Elektronik"
+            },
+            {
+                name: "Kursi",
+                price: 80000,
+                image: "https://images.tokopedia.net/img/JFrBQq/2024/1/16/4b9cc476-f5fc-45ee-a469-8b077a51d5e7.jpg",
+                description: "Kursi empuk dengan tinggi 40cm",
+                category: "Furniture"
+            },
+            {
+                name: "Meja",
+                price: 150000,
+                image: "https://images.tokopedia.net/img/JFrBQq/2024/1/16/4b9cc476-f5fc-45ee-a469-8b077a51d5e7.jpg",
+                description: "Meja lipat dengan tinggi 70cm",
+                category: "Furniture"
+            },
+            {
+                name: "Buku",
+                price: 50000,
+                image: "https://images.tokopedia.net/img/JFrBQq/2024/1/16/4b9cc476-f5fc-45ee-a469-8b077a51d5e7.jpg",
+                description: "Buku tebal dengan tebal 100 halaman",
+                category: "Buku"
+            },
+            {
+                name: "Pensil",
+                price: 1000,
+                image: "https://images.tokopedia.net/img/JFrBQq/2024/1/16/4b9cc476-f5fc-45ee-a469-8b077a51d5e7.jpg",
+                description: "Pensil dengan kualitas terbaik",
+                category: "Alat Tulis"
+            }
+        ];
+
+        let activeCategory = "Semua";
+        let searchQuery = "";
+
+        // Format price to Indonesian Rupiah
+        function formatPrice(price) {
+            return new Intl.NumberFormat('id-ID', {
+                style: 'currency',
+                currency: 'IDR',
+                minimumFractionDigits: 0
+            }).format(price);
+        }
+
+        // Get unique categories from products
+        function getCategories() {
+            const categories = [...new Set(products.map(p => p.category))];
+            return ["Semua", ...categories];
+        }
+
+        // Render category filter buttons
+        function renderCategoryButtons() {
+            const container = document.getElementById("categoryButtons");
+            container.innerHTML = "";
+
+            getCategories().forEach(cat => {
+                const btn = document.createElement("button");
+                btn.className = `category-btn ${cat === activeCategory ? "active" : ""}`;
+                btn.textContent = cat;
+                btn.addEventListener("click", () => {
+                    activeCategory = cat;
+                    renderCategoryButtons();
+                    renderProducts();
+                });
+                container.appendChild(btn);
+            });
+        }
+
+        // Filter products based on search query and category
+        function getFilteredProducts() {
+            return products.filter(product => {
+                const matchesSearch = product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                    product.description.toLowerCase().includes(searchQuery.toLowerCase());
+                const matchesCategory = activeCategory === "Semua" || product.category === activeCategory;
+                return matchesSearch && matchesCategory;
+            });
+        }
+
+        // Render products to the grid
+        function renderProducts() {
+            const grid = document.getElementById("productGrid");
+            const filtered = getFilteredProducts();
+
+            // Update result count
+            document.getElementById("resultCount").innerHTML =
+                `Menampilkan <span>${filtered.length}</span> dari <span>${products.length}</span> barang`;
+
+            grid.innerHTML = "";
+
+            if (filtered.length === 0) {
+                grid.innerHTML = `
+                <div class="col-12 no-results">
+                    <i class="fas fa-search"></i>
+                    <p>Tidak ada barang yang ditemukan</p>
+                </div>
+            `;
+                return;
+            }
+
+            filtered.forEach(product => {
+                const col = document.createElement("div");
+                col.className = "col-md-4 col-sm-6 product-col";
+                col.innerHTML = `
+                <div class="product-card">
+                    <div class="card-img-wrapper">
+                        <img src="${product.image}" alt="${product.name}">
+                    </div>
+                    <div class="card-body">
+                        <span class="category-badge">${product.category}</span>
+                        <h5 class="card-title">${product.name}</h5>
+                        <p class="card-text">${product.description}</p>
+                        <div class="price">${formatPrice(product.price)}</div>
+                        <a href="#" class="btn-detail">
+                            <i class="fas fa-shopping-cart me-1"></i> Lihat Detail
+                        </a>
+                    </div>
+                </div>
+            `;
+                grid.appendChild(col);
+            });
+        }
+
+        // Search input event listener
+        document.getElementById("searchInput").addEventListener("input", (e) => {
+            searchQuery = e.target.value;
+            renderProducts();
+        });
+
+        // Initial render
+        renderCategoryButtons();
+        renderProducts();
+    </script>
+
+</body>
+
+</html>
