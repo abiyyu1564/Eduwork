@@ -111,3 +111,15 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2026-02-20 22:16:09
+
+-- menambah data product
+INSERT INTO products (nama_produk, harga, deskripsi, stok) VALUES ('Mouse Logitech G502', 800000, 'Mouse gaming ergonomis dengan sensor HERO', 50);
+
+-- melihat data product
+SELECT * FROM products;
+
+-- update data product
+UPDATE products SET stok = 40 WHERE id = 2;
+
+-- delete data product
+DELETE FROM products WHERE id = 2;
