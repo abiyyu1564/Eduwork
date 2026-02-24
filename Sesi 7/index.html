@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <h3 class="display-3">Tugas Sesi 7</h3>
+
+            <form class="mb-3 p-3 col-md-6" action="process.php" method="POST">
+                <label class="form-label" for="name">Nama</label>
+                <input class="form-control border-black" type="text" name="name" id="name" required>
+
+                <label class="form-label" for="price">Price</label>
+                <input class="form-control border-black" type="number" name="price" id="price" required>
+
+                <label class="form-label" for="description">Description</label>
+                <textarea class="form-control border-black" name="description" id="description" cols="30" rows="5"
+                    required></textarea>
+
+                <label class="form-label" for="stok">Stok</label>
+                <input class="form-control border-black" type="number" name="stok" id="stok" required>
+
+                <button class="btn btn-primary mt-3" type="submit">Kirim</button>
+            </form>
+        </div>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+    crossorigin="anonymous"></script>
+
+</html>
