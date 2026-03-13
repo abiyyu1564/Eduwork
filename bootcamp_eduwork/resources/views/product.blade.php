@@ -1,12 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Page</title>
-</head>
-<body>
-    <h1>Product Page</h1>
-    <p>Welcome to the product page. Here you can find all the details about our products.</p>
-</body>
-</html>
+@extends('template.layout')
+@section('title', "Semua Produk")
+
+@section("content")
+    <div class="page-header">
+        <h1>Semua Produk <span style="font-size:1.6rem;">🛍️</span></h1>
+        <p>Menampilkan {{ $products->total() }} produk dari semua kategori</p>
+    </div>
+
+    <div class="row g-4 product-grid">
+        @forelse($products as $product)
+            <div class="col-12 col-md-6 col-lg-4">
+                <x-productCard :product="$product" />
+            </div>
+        @empty 
+            <div class="col-12">
+                <div class="text-center py-5">
+                    <i class="bi bi-inbox" style="font-size: 3rem; color: var(--gray);"></i>
+                    <p class="mt-3 text-muted">Belum ada produk tersedia.</p>
+                </div>
+            </div>
+        @endforelse
+    </div>
+
+    {{-- Pagination Links --}}
+    <div class="pagination-wrapper d-flex justify-content-center">
+        {{ $products->links() }}
+    </div>
+@endsection
