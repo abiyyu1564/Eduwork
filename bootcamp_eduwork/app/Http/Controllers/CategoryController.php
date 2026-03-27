@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
-class ProductsController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $products = Product::with('category')->get();
-        return view('admin.products.index', compact('products'));
+        $categories = Category::withCount('products')->get();
+        return view('admin.categories.index', compact('categories'));
     }
 
     /**
@@ -21,7 +21,7 @@ class ProductsController extends Controller
      */
     public function create()
     {
-        return view('admin.product.create_product');
+        return view('admin.categories.create');
     }
 
     /**
@@ -33,25 +33,17 @@ class ProductsController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     */
-    public function show(Product $product)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Product $product)
+    public function edit(Category $category)
     {
-        return view('admin.product.edit_product', compact('product'));
+        return view('admin.categories.edit', compact('category'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, Category $category)
     {
         //
     }
@@ -59,7 +51,7 @@ class ProductsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Product $product)
+    public function destroy(Category $category)
     {
         //
     }

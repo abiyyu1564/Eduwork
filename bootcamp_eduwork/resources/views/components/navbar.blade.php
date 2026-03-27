@@ -14,7 +14,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link {{ request()->is('product') ? 'active' : '' }}" href="{{ url('/product') }}">
+          <a class="nav-link {{ request()->is('products') ? 'active' : '' }}" href="{{ url('/products') }}">
             <i class="bi bi-grid me-1"></i>Products
           </a>
         </li>
