@@ -4,7 +4,7 @@
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 {{ __('Edit Produk') }}
             </h2>
-            <a href="{{ route('products.index') }}"
+            <a href="{{ route('product.index') }}"
                style="display: inline-flex; align-items: center; gap: 6px; padding: 10px 20px; background: #fff; color: #6C5CE7; border: 2px solid #6C5CE7; border-radius: 10px; text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: transform 0.15s, box-shadow 0.15s;"
                onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 14px rgba(108,92,231,0.2)';"
                onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
@@ -26,7 +26,7 @@
                 </div>
 
                 {{-- Form --}}
-                <form action="{{ route('products.update', $product) }}" method="POST" enctype="multipart/form-data" style="padding: 32px;">
+                <form action="{{ route('product.update', $product) }}" method="POST" enctype="multipart/form-data" style="padding: 32px;">
                     @csrf
                     @method('PUT')
 
@@ -141,7 +141,7 @@
 
                     {{-- Tombol Submit --}}
                     <div style="display: flex; gap: 12px; justify-content: flex-end;">
-                        <a href="{{ route('products.index') }}"
+                        <a href="{{ route('product.index') }}"
                            style="display: inline-flex; align-items: center; padding: 12px 24px; background: #f1f1f1; color: #636E72; border-radius: 10px; text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: transform 0.15s;"
                            onmouseover="this.style.transform='translateY(-1px)'"
                            onmouseout="this.style.transform='translateY(0)'">

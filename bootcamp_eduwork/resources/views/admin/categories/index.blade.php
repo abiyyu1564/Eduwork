@@ -4,7 +4,7 @@
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 {{ __('List Kategori') }}
             </h2>
-            <a href="{{ route('categories.create') }}"
+            <a href="{{ route('product-category.create') }}"
                style="display: inline-flex; align-items: center; gap: 6px; padding: 10px 20px; background: linear-gradient(135deg, #6C5CE7, #A29BFE); color: #fff; border-radius: 10px; text-decoration: none; font-weight: 600; font-size: 0.9rem; box-shadow: 0 4px 14px rgba(108,92,231,0.3); transition: transform 0.15s, box-shadow 0.15s;"
                onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(108,92,231,0.4)';"
                onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 14px rgba(108,92,231,0.3)';">
@@ -49,13 +49,13 @@
                                 </td>
                                 <td style="padding: 14px 20px; text-align: center;">
                                     <div style="display: flex; justify-content: center; gap: 8px;">
-                                        <a href="{{ route('categories.edit', $category) }}"
+                                        <a href="{{ route('product-category.edit', $category) }}"
                                            style="display: inline-flex; align-items: center; gap: 4px; padding: 8px 16px; background: #FFEAA7; color: #FDCB6E; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 0.8rem; transition: transform 0.15s;"
                                            onmouseover="this.style.transform='translateY(-1px)'"
                                            onmouseout="this.style.transform='translateY(0)'">
                                             ✏️ Edit
                                         </a>
-                                        <form action="{{ route('categories.destroy', $category) }}" method="POST" onsubmit="return confirm('Yakin ingin menghapus kategori ini?')">
+                                        <form action="{{ route('product-category.destroy', $category) }}" method="POST" onsubmit="return confirm('Yakin ingin menghapus kategori ini?')">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit"

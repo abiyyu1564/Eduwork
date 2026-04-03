@@ -17,8 +17,8 @@ Route::middleware(['auth', 'admin'])->group(function () {
         ->middleware('verified')
         ->name('dashboard');
 
-    Route::resource('categories', CategoryController::class);
-    Route::resource('products', ProductsController::class);
+    Route::resource('product-category', CategoryController::class);
+    Route::resource('product', ProductsController::class);
 });
 
 Route::middleware('auth')->group(function () {
